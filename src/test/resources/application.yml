@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:${spring.application.name};MODE=ORACLE
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      database-platform: org.hibernate.dialect.Oracle10gDialect
+    properties:
+      hibernate:
+        format_sql: true
+        show-sql: true
+        integration:
+          envers:
+            enabled: false
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: bet-coupon
+
+server:
+  port: 8083
+  servlet:
+    context-path: /coupon
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.hibernate: ERROR
+    com.bet: DEBUG
